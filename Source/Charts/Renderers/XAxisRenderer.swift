@@ -57,8 +57,7 @@ open class XAxisRenderer: NSObject, AxisRenderer
         let labelCount = axis.labelCount
         let range = abs(yMax - yMin)
 
-        let rawInterval = range / Double(labelCount)
-        var interval = rawInterval.roundedToNextSignificant()
+        var interval = range / Double(labelCount)
 
         // If granularity is enabled, then do not allow the interval to go below specified granularity.
         // This is used to avoid repeated values when rounding values for display.
