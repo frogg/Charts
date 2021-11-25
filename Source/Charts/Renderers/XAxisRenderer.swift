@@ -57,18 +57,6 @@ open class XAxisRenderer: NSObject, AxisRenderer
         let labelCount = axis.labelCount
         let range = abs(yMax - yMin)
 
-        guard
-            labelCount != 0,
-            range > 0,
-            range.isFinite
-            else
-        {
-            axis.entries = []
-            axis.centeredEntries = []
-            return
-        }
-
-        // Find out how much spacing (in y value space) between axis values
         let rawInterval = range / Double(labelCount)
         var interval = rawInterval.roundedToNextSignificant()
 
@@ -77,15 +65,6 @@ open class XAxisRenderer: NSObject, AxisRenderer
         if axis.granularityEnabled
         {
             interval = Swift.max(interval, axis.granularity)
-        }
-
-        // Normalize interval
-        let intervalMagnitude = pow(10.0, Double(Int(log10(interval)))).roundedToNextSignificant()
-        let intervalSigDigit = Int(interval / intervalMagnitude)
-        if intervalSigDigit > 5
-        {
-            // Use one order of magnitude higher, to avoid intervals like 0.9 or 90
-            interval = floor(10.0 * Double(intervalMagnitude))
         }
 
         var n = axis.centerAxisLabelsEnabled ? 1 : 0
