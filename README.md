@@ -3,6 +3,8 @@ This version of Swift Charts has been slightly adapted:
 - rounded bar chart
 - label count on xaxis is not optimized/rounded by `roundedToNextSignificant()` anymore, thus showing the specified amount of labels (without forcing), meaning that the labels still scroll with the content
 
+Apart from that, this uses the latest version from the Charts project:
+
 **Version 4.0.0**, synced to [MPAndroidChart #f6a398b](https://github.com/PhilJay/MPAndroidChart/commit/f6a398b)
 
 ![alt tag](https://raw.github.com/danielgindi/Charts/master/Assets/feature_graphic.png)
