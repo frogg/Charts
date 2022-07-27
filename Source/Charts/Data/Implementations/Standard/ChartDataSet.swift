@@ -468,6 +468,10 @@ extension ChartDataSet: RangeReplaceableCollection {
         notifyDataSetChanged()
     }
 
+    public func replaceSubrange<R, C>(_ subrange: R, with newElements: C) where R : RangeExpression, C : Collection, ChartDataEntry == C.Element {
+        
+    }
+    
     public func removeSubrange<R>(_ bounds: R) where R : RangeExpression, Index == R.Bound {
         entries.removeSubrange(bounds)
         notifyDataSetChanged()
